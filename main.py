@@ -15,6 +15,12 @@ class DinosaurExtration:
 
     def run(self):
         self.Dinosaurscrapping()
+        if os.path.exists("DinoFolder/Everything.JSON"):
+            os.remove("DinoFolder/Everything.JSON")
+        with open("DinoFolder/Everything.JSON", "w+") as JsonFile:
+            for line in self.dinos:
+                JsonFile.write(line + ",")
+
 
     def Dinosaurscrapping(self):
         names = self.getDinosaursFromAToB('https://www.nhm.ac.uk/discover/dino-directory/name/name-az-all.html')
@@ -56,7 +62,9 @@ class DinosaurExtration:
             for i, item in enumerate(Dinolist):
                 if i % 2 == 0:
                     Dictionary[Dinolist[i]] = Dinolist[i+1]
-            JsonFile.write(json.dumps(Dictionary))
+            file = json.dumps(Dictionary)
+            #JsonFile.write(file)
+            self.dinos.append(file)
 
             if os.path.exists(f"DinoFolder/{name}.JSON"):
                 return True
