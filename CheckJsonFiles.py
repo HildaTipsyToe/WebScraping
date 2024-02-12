@@ -15,9 +15,8 @@ class checkJsonFiles():
             # it
             # lived
             # found in
-            # taconomy
-            # named
-            # by
+            # taxonomy
+            # named_by
             # type species
 
         # teeth
