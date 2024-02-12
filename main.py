@@ -18,9 +18,18 @@ class DinosaurExtration:
         if os.path.exists("DinoFolder/Everything.JSON"):
             os.remove("DinoFolder/Everything.JSON")
         with open("DinoFolder/Everything.JSON", "w+") as JsonFile:
+            print(self.dinos)
             for line in self.dinos:
                 JsonFile.write(line + ",")
-
+        with open("DinoFolder/Everything.JSON", "w+") as JsonFile:
+            try:
+                files = json.load(JsonFile)
+                print(files)
+            except:
+                print("FAILED!")
+    def DataHandeling(self):
+        with open("DinoFolder/Everything.JSON", "w+") as JsonFile:
+            print(JsonFile)
 
     def Dinosaurscrapping(self):
         names = self.getDinosaursFromAToB('https://www.nhm.ac.uk/discover/dino-directory/name/name-az-all.html')
